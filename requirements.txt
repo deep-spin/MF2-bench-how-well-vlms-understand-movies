@@ -1,0 +1,49 @@
+
+
+# Covers: run_open_vlm.py, run_closed_source.py, and some models of the default registries. 
+
+
+# Supports most open source models and closed source (run_open_vlm.py, run_closed_source.py). For other specific models you may need to create a seperate venv.
+
+#   pip install -r requirements.txt
+
+
+
+# --- Core (scripts, data loading, logging) ---
+pandas==2.3.3
+loguru==0.7.3
+tqdm==4.67.1
+python-dotenv==1.2.1
+PyYAML==6.0.3
+
+# --- Closed-source API models (GPT, Claude, Gemini via LiteLLM) ---
+litellm==1.85.0
+openai==2.37.0
+
+# --- PyTorch + Hugging Face (open-source VLMs) ---
+torch==2.6.0
+torchvision==0.21.0
+torchaudio==2.6.0
+transformers==4.55.2
+accelerate==1.11.0
+safetensors==0.6.2
+tokenizers==0.21.4
+huggingface-hub==0.36.0
+sentencepiece==0.2.0
+einops==0.8.1
+timm==1.0.22
+
+# --- Vision / video I/O ---
+numpy==2.2.6
+pillow==11.3.0
+decord==0.6.0
+opencv-python==4.12.0.88
+av==16.0.1
+scipy==1.15.3
+qwen-vl-utils==0.0.14
+
+
+# --- LLaVA-Video (lazy-imported by models/open_source/llavavideo.py) ---
+llava @ git+https://github.com/LLaVA-VL/LLaVA-NeXT.git@09e5840d5589ad2d6a8656c0a60f21ae134b3309
+
+

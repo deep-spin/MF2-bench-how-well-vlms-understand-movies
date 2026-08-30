@@ -1,0 +1,38 @@
+
+
+# Use a SEPARATE venv from requirements.txt: 
+
+this is used for Qwen3-VL entries and vllm served models like: glm
+
+# Install:
+#   python -m venv venv-f3-vllm
+#   pip install -r requirements-vllm.txt
+#
+# Then run Qwen3-VL entries (e.g. Qwen/Qwen3-VL-30B-A3B-Instruct) from this env.
+
+# --- Shared runtime (same as requirements.txt, minus conflicting torch/transformers) ---
+pandas==2.3.3
+loguru==0.7.3
+tqdm==4.67.1
+python-dotenv==1.2.1
+PyYAML==6.0.3
+numpy==2.2.6
+pillow==11.3.0
+decord==0.6.0
+opencv-python==4.12.0.88
+av==16.0.1
+scipy==1.15.3
+qwen-vl-utils==0.0.14
+einops==0.8.1
+timm==1.0.22
+sentencepiece==0.2.0
+safetensors==0.6.2
+tokenizers==0.21.4
+huggingface-hub==0.36.0
+accelerate==1.11.0
+
+# --- vLLM stack ---
+torch==2.8.0
+transformers==4.57.1
+vllm==0.11.0
+xformers==0.0.32.post1

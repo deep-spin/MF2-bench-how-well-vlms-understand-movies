@@ -26,11 +26,6 @@ env/
 .ipynb_checkpoints/
 
 # Project outputs
-results/
-results_*/
-*_results/
-official_repo/results*/
-cached_video_frames/
 
 # Logs
 *.log
@@ -52,6 +47,4 @@ logs*.txt
 huggingface/
 
 # Full movies if cloned locally from Hugging Face
-data/MF2/
-
-results_frame_coverage/
+data/cropped_experiment_data/cropped_movies/

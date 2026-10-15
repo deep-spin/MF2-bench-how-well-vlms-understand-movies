@@ -1,8 +1,3 @@
-# imports for testing qwen-omni models (not needed for this project)
-# from models.open_source.qwen3_omni_vllm import qwen_omni_inference_vllm
-# from models.open_source.qwen3_omni_vllm import qwen_omni_inference_vllm_with_audio
-# from models.open_source.qwen3_omni_transformers import qwen_omni_inference_transformers
-
 from models.open_source.vllm_served_model import inference_vllm_served_model
 from models.open_source.cogvlm2 import cogvlm2_inference
 from models.open_source.kangaroo import kangaroo_inference

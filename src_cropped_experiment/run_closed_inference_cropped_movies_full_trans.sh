@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Closed-source inference on cropped clips + FULL (untrimmed) per-claim transcripts.
 # Run from the private repo root (or anywhere — this script cds there).
-# Expects OPENROUTER_API_MF2_KEY in .env (same as bash_scripts/run_closed_inference.sh).
+# Expects OPENROUTER_API_KEY in .env or the environment.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -17,7 +17,7 @@ if [[ -f "${REPO_ROOT}/.env" ]]; then
   # shellcheck disable=SC2046
   export $(grep -v '^#' "${REPO_ROOT}/.env" | xargs)
 fi
-API_KEY="${OPENROUTER_API_MF2_KEY:?Set OPENROUTER_API_MF2_KEY in .env or the environment}"
+API_KEY="${OPENROUTER_API_KEY:?Set OPENROUTER_API_KEY in .env or the environment}"
 API_BASE="${API_BASE:-https://openrouter.ai/api/v1}"
 
 module load ffmpeg 2>/dev/null || true
@@ -36,7 +36,7 @@ NUM_FRAMES=120
 CROPPED_ROOT="${REPO_ROOT}/data/cropped_experiment_data"
 VIDEOS_ROOT="${CROPPED_ROOT}/cropped_movies"
 TRANSCRIPTS_ROOT="${CROPPED_ROOT}/transcripts_full"
-SYNOPSIS_ROOT="${SYNOPSIS_ROOT:-data/synopsis}"
+SYNOPSIS_ROOT="${REPO_ROOT}/data/synopsis"
 DATA_PATH="${CROPPED_ROOT}/cropped_movies_experiment_claims.csv"
 
 MOVIE_IDS=(5 9 13 15 16 17 29 30 34 37 38 39 47 54)

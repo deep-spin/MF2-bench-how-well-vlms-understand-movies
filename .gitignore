@@ -46,5 +46,5 @@ logs*.txt
 .cache/
 huggingface/
 
-# Full movies if cloned locally from Hugging Face
-data/cropped_experiment_data/cropped_movies/
+# data/cropped_experiment_data/cropped_movies/
+data/cropped_experiment_data/cropped_movies

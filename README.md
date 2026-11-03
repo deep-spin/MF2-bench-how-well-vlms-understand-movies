@@ -6,25 +6,30 @@ Guidelines and inference code for reproducing results.
 ## 🔗 Important Links
 
 - 📄 **Paper:** [Movie Facts and Fibs (MF²): A Benchmark for Long Movie Understanding](https://arxiv.org/abs/2506.06275)
-- 🤗 **Dataset (Hugging Face):** [sardinelab/MF2](https://huggingface.co/datasets/sardinelab/MF2)
+- 🤗 **Dataset (Hugging Face):** [sardinelab/MF2-movie-facts-and-fibs](https://huggingface.co/datasets/sardinelab/MF2-movie-facts-and-fibs)
 - 🌐 **Website:** [mf2.io](https://manzar96.github.io/mf2.io/)
 
 
 
-## 📥 Download the MF2 Dataset
+## 📦 Clone this repo
 
-To download the **full-length movies** into the `data/` folder:
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone git@github.com:deep-spin/MF2-bench-how-well-vlms-understand-movies.git
+cd MF2-bench-how-well-vlms-understand-movies
+```
 
-1. Make sure [Git LFS](https://git-lfs.github.com/) is installed. Then run:
+## 📥 Download the MF2 dataset
 
-   ```bash
-   git lfs install
-   (cd data && git clone https://huggingface.co/datasets/sardinelab/MF2)
-   ```
+Download the full-length movies from [sardinelab/MF2-movie-facts-and-fibs](https://huggingface.co/datasets/sardinelab/MF2-movie-facts-and-fibs) into `data/MF2`:
 
-Point `VIDEO_BASE_PATH` in the bash scripts to the directory that contains the movie files, typically `data/MF2/test` after the clone (`<movie_id>.mp4`). Claims (`data/MF2_test.csv`), transcripts (`data/transcripts/`), and synopsis files (`data/synopsis/`) are already included in this repo.
+```bash
+git lfs install
+(cd data && git clone https://huggingface.co/datasets/sardinelab/MF2-movie-facts-and-fibs MF2)
+```
 
+Each inference script sets `VIDEO_BASE_PATH` itself to the directory that contains `<movie_id>.mp4`. Claims (`data/MF2_test.csv`), transcripts (`data/transcripts/`), and synopsis files (`data/synopsis/`) are already in this repo.
 
+> 💡 **Cropped-movie experiment.** Optional single-scene clips with the full transcript. See [`src_cropped_experiment/README.md`](src_cropped_experiment/README.md).
 
 
 ## ⚙️ Setup Instructions
@@ -104,16 +109,15 @@ python ./run_open_vlm.py \
     --user_prompt_template_name direct_free \
     --system_prompt_template_name default \
     --modality video_and_transcripts \
-    --output_dir ./results_open_source_gemma3/video_and_transcripts/direct_free \
+    --output_dir <output_dir> \
     --video_path data/MF2/test/1.mp4 \
     --transcripts_path data/transcripts/1.srt \
     --synopsis_path data/synopsis/1.synopsis \
     --max_frames 180
 ```
 
-Other example launchers live under `bash_scripts/` (e.g. Qwen3-VL with the vLLM env).
+Other example launchers live under `bash_scripts/`.
 
-For **cropped / targeted-clip** evaluation (single-scene clips instead of full movies), see [`src_cropped_movies/README.md`](src_cropped_movies/README.md).
 
 ## 📊 Evaluation
 
@@ -123,17 +127,17 @@ After inference, `run_open_vlm.py` writes one JSON file per movie under a model-
 <output_dir>/<model_with_slashes_replaced>/<movie_id>-results.json
 ```
 
-For example, Gemma results land in:
+For example, with `google/gemma-3-27b-it` the files land in:
 
 ```
-./results_open_source_gemma3/video_and_transcripts/direct_free/google__gemma-3-27b-it/
+<output_dir>/google__gemma-3-27b-it/
 ```
 
 Parse those raw outputs and print aggregate metrics with:
 
 ```bash
 python parse_model_outputs.py \
-    --output_dir ./results_open_source_gemma3/video_and_transcripts/direct_free/google__gemma-3-27b-it \
+    --output_dir <output_dir> \
     --strategy last-occurrence
 ```
 

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$REPO_ROOT"
+
 # VENV_PATH="/mnt/scratch-hades/manos/venvs/venv-f3-transformers" # set your venv path here
 VENV_PATH="/mnt/scratch-hades/manos/venvs/mf2-env" # set your venv path here
 source "$VENV_PATH/bin/activate"
@@ -17,10 +21,10 @@ MAX_FRAMES=64 # set frames to use for inference
 MOVIE_IDS=(1 ) # set from 1-54 (53 movies in total, 41 movie id is not included in the dataset)
 
 SYSTEM_PROMPT_TEMPLATE_NAME="default"
-DATA_PATH="data/MF2_test.csv"
-VIDEO_BASE_PATH="data/MF2/test" # set your video base path here (where the full-length movies are stored, after downloading the HF dataset)
-TRANSCRIPTS_BASE_PATH="data/transcripts"
-SYNOPSIS_BASE_PATH="data/synopsis"
+DATA_PATH="${REPO_ROOT}/data/MF2_test.csv"
+VIDEO_BASE_PATH="${REPO_ROOT}/data/MF2/test" # directory with <movie_id>.mp4 files from the HF dataset
+TRANSCRIPTS_BASE_PATH="${REPO_ROOT}/data/transcripts"
+SYNOPSIS_BASE_PATH="${REPO_ROOT}/data/synopsis"
 
 
 echo "Running inference in movies: ${MOVIE_IDS[@]}"

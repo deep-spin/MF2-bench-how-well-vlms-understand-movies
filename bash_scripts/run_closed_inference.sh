@@ -1,5 +1,9 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$REPO_ROOT"
+
 # Set the venv path as a variable
 VENV_PATH="/mnt/scratch-hades/manos/venvs/mf2-env" # set your venv path here
 source "$VENV_PATH/bin/activate"
@@ -30,10 +34,10 @@ MOVIE_IDS=(1 2 )
 # MOVIE_IDS=(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 42 43 44 45 46 47 48 49 50 51 52 53 54)
 
 SYSTEM_PROMPT_TEMPLATE_NAME="default"
-DATA_PATH="data/MF2_test.csv"
-VIDEO_BASE_PATH="data/MF2/test" # set your video base path here (where the full-length movies are stored, after downloading the HF dataset)
-TRANSCRIPTS_BASE_PATH="data/transcripts"
-SYNOPSIS_BASE_PATH="data/synopsis"
+DATA_PATH="${REPO_ROOT}/data/MF2_test.csv"
+VIDEO_BASE_PATH="${REPO_ROOT}/data/MF2/test" # directory with <movie_id>.mp4 files from the HF dataset
+TRANSCRIPTS_BASE_PATH="${REPO_ROOT}/data/transcripts"
+SYNOPSIS_BASE_PATH="${REPO_ROOT}/data/synopsis"
 
 CACHE_VIDEO_FRAMES_FLAG=""
 if [ "$CACHE_VIDEO_FRAMES" = True ]; then

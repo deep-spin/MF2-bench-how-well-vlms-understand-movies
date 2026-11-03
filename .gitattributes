@@ -1,1 +1,1 @@
-data/cropped_movies_final/single_only/cropped_mp4/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+data/cropped_experiment_data/cropped_movies/**/*.mp4 filter=lfs diff=lfs merge=lfs -text

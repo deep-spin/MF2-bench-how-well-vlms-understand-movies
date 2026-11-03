@@ -29,7 +29,7 @@ MODE="independent"
 MAX_FRAMES=180  # leave empty to use each adapter's default
 
 # Cropped assets (per-claim files under {root}/{movie_id}/{movie_id}_claim_{claim_id}.ext)
-CROPPED_ROOT="data/cropped_experiment_data" # root of cropped data
+CROPPED_ROOT="${REPO_ROOT}/data/cropped_experiment_data" # root of cropped data
 VIDEOS_ROOT="${CROPPED_ROOT}/cropped_movies" # directory with cropped movie files.
 TRANSCRIPTS_ROOT="${CROPPED_ROOT}/transcripts_full"  # full transcript copied per claim
 SYNOPSIS_ROOT="None"

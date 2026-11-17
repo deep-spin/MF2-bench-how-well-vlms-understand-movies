@@ -5,7 +5,7 @@ Guidelines and inference code for reproducing results.
 
 ## 🔗 Important Links
 
-- 📄 **Paper:** [Movie Facts and Fibs (MF²): A Benchmark for Long Movie Understanding](https://arxiv.org/abs/2506.06275)
+- 📄 **Paper:** [How Well Do Vision-Language Models Understand Movies? (MF²)](https://aclanthology.org/2026.emnlp-main.1702/)
 - 🤗 **Dataset (Hugging Face):** [sardinelab/MF2-movie-facts-and-fibs](https://huggingface.co/datasets/sardinelab/MF2-movie-facts-and-fibs)
 - 🌐 **Website:** [mf2.io](https://manzar96.github.io/mf2.io/)
 - 📚 **Cite us:** [Citation](#citation)
